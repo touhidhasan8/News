@@ -7,12 +7,23 @@ import { CiBookmark } from 'react-icons/ci';
 import { IoMdEye, IoMdShare } from 'react-icons/io';
 import { MdStar } from 'react-icons/md';
 
+
+export const generateMetadata = async ({ params }) => {
+    const { id } = await params
+    const details = await getNewsDetails(id)
+    return {
+        title: details.title,
+        description: details.details,
+    }
+
+}
+
+
+
 const DetailsPAge = async ({ params }) => {
     const { id } = await params;
-    console.log(id);
-
     const details = await getNewsDetails(id)
-    console.log(details);
+
 
     return (
         <div>
@@ -90,7 +101,7 @@ const DetailsPAge = async ({ params }) => {
                     </div>
                     <Link className='flex justify-end' href={`/category/${details.category_id}`}>
                         <button className='px-3 py-2 flex gap-2 items-center bg-[#FF8C47] text-white rounded border-b-2 border-transparent hover:border-[#FF8C47] transition duration-300'>
-                           <BiArrowBack/> All news in this category 
+                            <BiArrowBack /> All news in this category
                         </button>
                     </Link>
                 </div>
