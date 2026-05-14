@@ -1,5 +1,5 @@
 import AllCategory from '@/components/allcategory/page';
-import SocialPage from '@/components/social/page';
+import SocialPage from '@/components/RightSightBar/page';
 import React from 'react';
 import NotFound from '../NotFound';
 import { getCategory, getNews } from '@/lib/data';
