@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form';
 import { Eye, EyeSlash } from "@gravity-ui/icons";
 import { authClient } from '@/lib/auth-client';
 import Link from 'next/link';
+import { toast } from 'react-toastify';
 
 const RegisterPage = () => {
     // Password State => 
@@ -26,11 +27,11 @@ const RegisterPage = () => {
         });
         console.log(data, error);
         if (error) {
-            alert("User Already Exist!!")
+            toast.error(error.message);
         }
 
         if (data) {
-            alert("Registration Success")
+            toast("Registration Success")
         }
 
     };
@@ -114,7 +115,7 @@ const RegisterPage = () => {
                         Submit
                     </Button>
                 </div>
-                <h1 className=' text-center'> Have An Account ? 
+                <h1 className=' text-center'> Have An Account ?
                     <Link href={"/login"}><span className='text-blue-400'> Login</span>
                     </Link></h1>
 

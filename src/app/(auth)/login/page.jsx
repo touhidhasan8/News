@@ -6,6 +6,7 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Eye, EyeSlash } from "@gravity-ui/icons";
 import { authClient } from '@/lib/auth-client';
+import { toast } from 'react-toastify';
 
 const LoginPage = () => {
     // Password State => 
@@ -22,8 +23,14 @@ const LoginPage = () => {
             rememberMe: true,
             callbackURL: "/",
         });
-        console.log(data, error);
-        
+        if (error) {
+            toast.error(error.message);
+        }
+
+        if(data){
+            toast( "Login successful" )
+        }
+
     };
 
 
